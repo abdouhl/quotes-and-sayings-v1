@@ -208,6 +208,10 @@ useHead({
   "fr": {
     "quotes": "Citations",
     "description": "Collection triée sur le volet des meilleures citations et tweets de "
+  },
+  "de": {
+    "quotes": "Zitate",
+    "description": "Handverlesene Sammlung der besten Zitate und Tweets von "
   }
 }
 </i18n>
