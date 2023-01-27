@@ -29,6 +29,10 @@ export default defineNuxtConfig({
       {
         code: 'de',
         name: 'Allemand'
+      },
+      {
+        code: 'pt',
+        name: 'Portugais'
       }
     ],
     defaultLocale: 'en',
@@ -47,6 +51,9 @@ export default defineNuxtConfig({
 			 },
 			 de: {
 				 title: 'Zitate und Sprüche'
+			 },
+			 pt: {
+				 title: 'Citações E Provérbios'
 			 }
 		 }
 		}

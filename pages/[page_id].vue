@@ -134,6 +134,9 @@ const {pending,data} = useLazyFetch('/api/a_p/'+page_id+'?lang='+locale.value,{k
   },
   "de": {
     "quotes": "Zitate"
+  },
+  "pt": {
+    "quotes": "Citações"
   }
 }
 </i18n>
