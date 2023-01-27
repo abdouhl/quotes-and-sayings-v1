@@ -58,10 +58,19 @@ await until(pending).toBe(false)
 
 useHead({
   title: data._value.author.name+' '+ t('quotes'),
-  //<meta name=”robots” content="index, follow">
   meta: [
+    { name: 'title', content: data._value.author.name+' '+ t('quotes') },
     { name: 'description', content: t('description') +data._value.author.name },
     { name: 'robots', content: "index, follow" },
+    { name: 'keywords', content: t('quotes')+", "+data._value.author.name+", "+data._value.author.name+" "+t('quotes') },
+    { name: 'author', content: data._value.author.name },
+    //Open Graph / Facebook
+    { name: 'og:type', content: 'article' },
+    { name: 'og:title', content: data._value.author.name+' '+ t('quotes') },
+    { name: 'og:description', content: t('description') +data._value.author.name },
+    { name: 'og:image', content: 'https://8ooim6.deta.dev/'+quote_key },
+    { name: 'og:url', content: 'https://www.quotesandsayings.net'+localePath('/quotes/')+'/'+data.author.username+'-'+quote.key },
+    //twitter
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: data._value.author.name+' '+ t('quotes') },
     { name: 'twitter:image', content: 'https://8ooim6.deta.dev/'+quote_key },
