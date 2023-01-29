@@ -218,7 +218,7 @@ useHead({
     "quotes": "Zitate",
     "description": "Handverlesene Sammlung der besten Zitate und Tweets von "
   },
-  "de": {
+  "pt": {
     "quotes": "Citações",
     "description": "Coleção escolhida a dedo das melhores citações e tweets por "
   }
