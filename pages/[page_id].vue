@@ -64,7 +64,7 @@ const {pending,data} = useLazyFetch('/api/a_p/'+page_id+'?lang='+locale.value,{k
 		    <nuxt-img class="rounded-full h-28 mx-auto" :src="author.profile_image" loading="lazy" />
 		    <h3 class="text-center pt-2 text-xl" >{{author.name}}</h3>
 		    <p class="text-center text-gray-500 text-xs" >@{{author.screen_name}}</p>
-		    <p class="text-center mt-4 mb-2"><a class="p-2   rounded-lg bg-stone-100 text-white bg-slate-400 text-xs md:text-l font-bold" :href="localePath('/quotes/'+author.screen_name)">Quotes</a></p>
+		    <p class="text-center mt-4 mb-2"><a class="p-2   rounded-lg bg-stone-100 text-white bg-slate-400 text-xs md:text-l font-bold" :href="localePath('/quotes/'+author.screen_name)">{{ t('quotes') }}</a></p>
 		  </div>
   </div>
   <div class="w-fit mx-auto  my-2 lg:my-4 text-l sm:text-3xl text-slate-400">
