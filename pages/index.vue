@@ -13,7 +13,7 @@ const availableLocales = computed(() => {
 })
 
 
-const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+page_id+'/'+locale.value,{key: page_id})
+const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+locale.value,{key: page_id})
 
 
 

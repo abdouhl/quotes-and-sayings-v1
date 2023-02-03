@@ -14,7 +14,7 @@ const availableLocales = computed(() => {
   return (locales.value).filter(i => i.code !== locale.value)
 })
 
-const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+page_id+'/'+locale.value,{key: page_id})
+const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+locale.value,{key: page_id})
 
 </script>
 
