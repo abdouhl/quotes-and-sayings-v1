@@ -22,7 +22,7 @@ const availableLocales = computed(() => {
   return (locales.value).filter(i => i.code !== locale.value)
 })
 
-const {pending,data} = useLazyFetch('/api/a_q/'+author_username+'?lang='+locale.value,{key: author_username})
+const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+author_username+'/'+locale.value,{key: author_username})
 
 
 onMounted(async () => {

@@ -1,5 +1,6 @@
 <script setup>
 import { useI18n } from '#imports'
+
 const {page_id} = useRoute().params
 
 
@@ -13,11 +14,7 @@ const availableLocales = computed(() => {
   return (locales.value).filter(i => i.code !== locale.value)
 })
 
-const {pending,data} = useLazyFetch('/api/a_p/'+page_id+'?lang='+locale.value,{key: page_id})
-
-
-
-
+const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+page_id+'/'+locale.value,{key: page_id})
 
 </script>
 
@@ -124,7 +121,7 @@ const {pending,data} = useLazyFetch('/api/a_p/'+page_id+'?lang='+locale.value,{k
 <i18n lang="json">
 {
   "en": {
-    "quotes": "Quotes"
+    "quotes": "Quotes",
   },
   "es": {
     "quotes": "Citas"
