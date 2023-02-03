@@ -1,15 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-// yarn build  .nuxt/dist yarn install
-if (
-  process.env.LD_LIBRARY_PATH == null ||
-  !process.env.LD_LIBRARY_PATH.includes(
-    `${process.env.PWD}/node_modules/canvas/build/Release:`,
-  )
-) {
-  process.env.LD_LIBRARY_PATH = `${
-    process.env.PWD
-  }/node_modules/canvas/build/Release:${process.env.LD_LIBRARY_PATH || ''}`;
-}
 export default defineNuxtConfig({
   modules: ['@nuxtjs/i18n','@nuxtjs/supabase','nuxt-schema-org','nuxt-icon',"@nuxt/image-edge","@nuxtjs/tailwindcss"],
   i18n: {
@@ -71,15 +59,6 @@ export default defineNuxtConfig({
   robots: {
     
   },
-  server:[
-		"/<rootDir>/.nuxt",
-		"/<rootDir>/public",
-		"/<rootDir>",
-		"/<rootDir>",
-		"/<rootDir>",
-		"/<rootDir>/node_modules",
-		"/vercel/path0/packages/schema/node_modules"
-	],
   css: [
     '@/assets/css/main.css',
   ],
