@@ -31,12 +31,12 @@ const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+l
   <div v-else>
     <header class="items-center bg-white shadow border-t-4 border-slate-800">
   <div class="flex flex-1 items-center p-3">
-    <NuxtLink class="flex items-center font-mono tracking-tighter" :to="localePath('/')">
+    <a class="flex items-center font-mono tracking-tighter" :href="localePath('/')">
       <svg class="w-10 mr-2" viewBox="0 0 121.5 114.7" xmlns="http://www.w3.org/2000/svg">
         <path d="m 0.5 65 c -5 -62.5 77.5 -92.5 110 -30 h -17.5 c -7.5 -20 -62.5 -37.5 -76.25 15 h 40 l 65 65 h -21.25 l -10 -10 c -35 22.5 -75 5 -85 -25 h 17.5 c 7.5 15 30 27.5 55.75 13.75 l -28.25 -28.75 z m 70 -15 h 43.5 c 1.5 5 1.5 20 -7 36.5 z" fill="currentFill"/>
       </svg>
       <pre class="font-mono font-bold text-sm">{{ $t('title') }}</pre>
-    </NuxtLink>
+    </a>
   </div>
   <nav class="absolute top-0 right-0 mt-3 md:w-auto py-1 px-2">
     <ul class="flex justify-end items-start text-slate-900 text-sm text-center">
@@ -44,7 +44,7 @@ const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+l
         <div class="w-16 md:w-24">
           <a href="#" class="block py-1 px-1" @click.prevent="nav.lang=!nav.lang">{{locales.map(i=>i.name)[locales.map(i=>i.code).indexOf(locale)]}}</a>
           <ul v-if="nav.lang" class="my-2 text-sm leading-loose text-center">
-						<li v-for="locale in availableLocales" ><NuxtLink :key="locale.code" :to="switchLocalePath(locale.code)">{{locale.name}}</NuxtLink></li>
+						<li v-for="locale in availableLocales" ><a :key="locale.code" :href="switchLocalePath(locale.code)">{{locale.name}}</a></li>
 						</ul>
         </div>
       </li>
@@ -68,24 +68,24 @@ const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+l
   	<div class="w-fit flex justify-center sm:gap-2  items-center">
   	
   	
-  		<div class="my-2 mx-1 "><NuxtLink  :class="page_id == '1' ? ['cursor-not-allowed','text-slate-300'] : ['text-slate-400','hover:text-slate-500']"  :to="localePath(page_id != '1' ?'/'+(parseInt(page_id)-1) : null)">
+  		<div class="my-2 mx-1 "><a  :class="page_id == '1' ? ['cursor-not-allowed','text-slate-300'] : ['text-slate-400','hover:text-slate-500']"  :href="localePath(page_id != '1' ?'/'+(parseInt(page_id)-1) : null)">
   		<svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" fill="currentColor" class="w-4 sm:w-8 bi bi-chevron-left" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
       </svg>
-  		</NuxtLink></div>
+  		</a></div>
   		
-  		<div class="my-2 mx-1 align-top font-bold" ><NuxtLink :class="page_id == '1' ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']" :to="localePath(page_id != '1' ?'/1' : null)">
+  		<div class="my-2 mx-1 align-top font-bold" ><a :class="page_id == '1' ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != '1' ?'/1' : null)">
   		1
-  		</NuxtLink></div>
+  		</a></div>
   		
   		<div v-if="parseInt(page_id) >= 5" class="my-2 mx-1" ><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 bi bi-three-dots" viewBox="0 0 16 16">
         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
       </svg></div>
       
       
-  		<div v-for="pagintion_num in data.pagintion_nums" class="my-2 mx-1 align-top font-bold" ><NuxtLink :class="page_id == pagintion_num ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']" :to="localePath(page_id != pagintion_num ?'/'+pagintion_num : null)">
+  		<div v-for="pagintion_num in data.pagintion_nums" class="my-2 mx-1 align-top font-bold" ><a :class="page_id == pagintion_num ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != pagintion_num ?'/'+pagintion_num : null)">
   		   {{pagintion_num}}
-  		</NuxtLink></div>      
+  		</a></div>      
       
       
       
@@ -93,15 +93,15 @@ const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+l
         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
       </svg></div> 
        		
-  		<div class="my-2 mx-1 align-top font-bold" ><NuxtLink :class="page_id == data.pages_count ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']"  :to="localePath(page_id != data.pages_count ?'/'+data.pages_count: null)">
+  		<div class="my-2 mx-1 align-top font-bold" ><a :class="page_id == data.pages_count ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']"  :href="localePath(page_id != data.pages_count ?'/'+data.pages_count: null)">
   		{{data.pages_count}}
-  		</NuxtLink></div>
+  		</a></div>
   		
-  		<div class="my-2 mx-1" ><NuxtLink :class="page_id == data.pages_count ? ['cursor-not-allowed','text-slate-300'] : ['text-slate-400','hover:text-slate-500']" :to="localePath(page_id != data.pages_count ?'/'+(parseInt(page_id)+1) : null)">
+  		<div class="my-2 mx-1" ><a :class="page_id == data.pages_count ? ['cursor-not-allowed','text-slate-300'] : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != data.pages_count ?'/'+(parseInt(page_id)+1) : null)">
   		<svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" fill="currentColor" class="w-4 sm:w-8 bi bi-chevron-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
       </svg>
-  		</NuxtLink></div>
+  		</a></div>
   		
   	</div>
   </div>
