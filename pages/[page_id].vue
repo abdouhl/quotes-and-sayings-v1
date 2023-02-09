@@ -134,6 +134,9 @@ const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+l
   },
   "pt": {
     "quotes": "Citações"
+  },
+  "ar": {
+    "quotes": "أقوال"
   }
 }
 </i18n>

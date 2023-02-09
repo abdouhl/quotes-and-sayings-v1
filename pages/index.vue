@@ -15,9 +15,11 @@ const availableLocales = computed(() => {
 
 const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+locale.value,{key: page_id})
 
-
-
-
+useHead({
+  htmlAttrs: {
+    lang: locale.value,
+  }
+})
 
 
 </script>
@@ -125,19 +127,28 @@ const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+l
 <i18n lang="json">
 {
   "en": {
-    "quotes": "Quotes"
+    "quotes": "Quotes",
+    "dir": "ltr"
   },
   "es": {
-    "quotes": "Citas"
+    "quotes": "Citas",
+    "dir": "ltr"
   },
   "fr": {
-    "quotes": "Citations"
+    "quotes": "Citations",
+    "dir": "ltr"
   },
   "de": {
-    "quotes": "Zitate"
+    "quotes": "Zitate",
+    "dir": "ltr"
   },
   "pt": {
-    "quotes": "Citações"
+    "quotes": "Citações",
+    "dir": "ltr"
+  },
+  "ar": {
+    "quotes": "أقوال",
+    "dir": "rtl"
   }
 }
 </i18n>

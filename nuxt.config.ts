@@ -4,23 +4,33 @@ export default defineNuxtConfig({
     locales: [
       {
         code: 'en',
-        name: 'English'
+        name: 'English',
+        dir: "ltr"
       },
       {
         code: 'es',
-        name: 'Español'
+        name: 'Español',
+        dir: "ltr"
       },
       {
         code: 'fr',
-        name: 'Français'
+        name: 'Français',
+        dir: "ltr"
       },
       {
         code: 'de',
-        name: 'Allemand'
+        name: 'Allemand',
+        dir: "ltr"
       },
       {
         code: 'pt',
-        name: 'Portugais'
+        name: 'Portugais',
+        dir: "ltr"
+      },
+      {
+        code: 'ar',
+        name: 'العربية',
+        dir: "rtl"
       }
     ],
     defaultLocale: 'en',
@@ -42,6 +52,9 @@ export default defineNuxtConfig({
 			 },
 			 pt: {
 				 title: 'Citações E Provérbios'
+			 },
+			 ar: {
+				 title: 'أقوال و اقتباسات'
 			 }
 		 }
 		}
