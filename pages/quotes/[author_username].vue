@@ -171,7 +171,7 @@ useHead({
           @{{data.author.username}}
         </p>
       </div>
-      <div class="mt-2 md:mt-4 divide-y divide-slate-200">
+      <div :dir="t('dir')" class="mt-2 md:mt-4 divide-y divide-slate-200">
         <div class="md:text-2xl text-slate-800 p-2 md:p-4 pb-1 md:pb-2 w-full" v-for="(quote, index) in data.quotes_list" >
           <p class="whitespace-pre-line">{{quote.text}}</p>
           <div class="flex flex-row-reverse gap-2 pt-1 md:pt-2">
@@ -204,23 +204,33 @@ useHead({
 {
   "en": {
     "quotes": "Quotes",
-    "description": "Handpicked collection of the best quotes and tweets by "
+    "description": "Handpicked collection of the best quotes and tweets by ",
+    "dir": "ltr"
   },
   "es": {
     "quotes": "Citas",
-    "description": "Colección cuidadosamente seleccionada de las mejores citas y tweets por "
+    "description": "Colección cuidadosamente seleccionada de las mejores citas y tweets por ",
+    "dir": "ltr"
   },
   "fr": {
     "quotes": "Citations",
-    "description": "Collection triée sur le volet des meilleures citations et tweets de "
+    "description": "Collection triée sur le volet des meilleures citations et tweets de ",
+    "dir": "ltr"
   },
   "de": {
     "quotes": "Zitate",
-    "description": "Handverlesene Sammlung der besten Zitate und Tweets von "
+    "description": "Handverlesene Sammlung der besten Zitate und Tweets von ",
+    "dir": "ltr"
   },
   "pt": {
     "quotes": "Citações",
-    "description": "Coleção escolhida a dedo das melhores citações e tweets por "
+    "description": "Coleção escolhida a dedo das melhores citações e tweets por ",
+    "dir": "ltr"
+  },
+  "ar": {
+    "quotes": "أقوال",
+    "description": "مجموعة منتقاة بعناية من أفضل اقتباسات وتغريدات ",
+    "dir": "rtl"
   }
 }
 </i18n>
