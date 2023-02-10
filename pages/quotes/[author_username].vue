@@ -57,18 +57,18 @@ await until(pending).toBe(false)
 
 
 useHead({
-  title: data._value.author.name+' '+ t('quotes'),
+  title: locale.value =="ar"? t('quotes')+' '+data._value.author.name : data._value.author.name+' '+t('quotes'),
   meta: [
-    { name: 'title', content: data._value.author.name+' '+ t('quotes') },
+    { name: 'title', content: locale.value =="ar"? t('quotes')+' '+data._value.author.name : data._value.author.name+' '+t('quotes') },
     { name: 'description', content: t('description') +data._value.author.name },
     { name: 'robots', content: "index, follow" },
     { name: 'keywords', content: t('quotes')+", "+data._value.author.name+", "+data._value.author.name+" "+t('quotes') },
     { name: 'og:type', content: 'article' },
-    { name: 'og:title', content: data._value.author.name+' '+ t('quotes') },
+    { name: 'og:title', content: locale.value =="ar"? t('quotes')+' '+data._value.author.name : data._value.author.name+' '+t('quotes') },
     { name: 'og:description', content: t('description') +data._value.author.name },
     { name: 'og:image', content: data._value.author.profile_image },
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: data._value.author.name+' '+ t('quotes') },
+    { name: 'twitter:title', content: locale.value =="ar"? t('quotes')+' '+data._value.author.name : data._value.author.name+' '+t('quotes') },
     { name: 'twitter:image', content: 'https://8ooim6.deta.dev/'+quote_key },
   ],
   script: [
