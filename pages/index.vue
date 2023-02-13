@@ -85,7 +85,7 @@ useHead({
 		<div class="grid mx-auto w-fit grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-8 mt-2 md:mt-4 px-2 md:px-24 lg:px-36">
 		  <div class="aspect-square  max-h-60   rounded-lg bg-white p-2" v-for="author in data.authors" >
 		    <nuxt-img class="rounded-full h-28 mx-auto" :src="author.profile_image" loading="lazy" />
-		    <h3 class="text-center pt-2 text-xl" >{{author.name}}</h3>
+		    <h3 class="text-center pt-2 md:text-xl truncate" >{{author.name}}</h3>
 		    <p class="text-center text-gray-500 text-xs" >@{{author.screen_name}}</p>
 		    <p class="text-center mt-4 mb-2"><a class="p-2   rounded-lg bg-stone-100 text-white bg-slate-400 text-xs md:text-l font-bold" :href="localePath('/quotes/'+author.screen_name)">{{ t('quotes') }}</a></p>
 		  </div>
