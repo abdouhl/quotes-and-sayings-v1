@@ -176,7 +176,7 @@ useHead({
           <p class="whitespace-pre-line">{{quote.text}}</p>
           <div class="flex flex-row-reverse gap-2 pt-1 md:pt-2">
 		        <a :href="'https://twitter.com/intent/tweet?url=https://www.quotesandsayings.net'+localePath('/quotes/')+'/'+data.author.username+'-'+quote.key"><Icon name="entypo-social:twitter-with-circle" class=" text-slate-400 hover:text-slate-500 text-l md:text-2xl" /></a>
-		        <a :href="'http://www.linkedin.com/shareArticle?mini=true&url=https://www.quotesandsayings.net'+localePath('/quotes/')+'/'+data.author.username+'-'+quote.key+'&title='+locale.value =='ar'? t('quotes')+' '+data._value.author.name : data._value.author.name+' '+t('quotes')+'&source=quotesandsayings.net'"><Icon name="entypo-social:linkedin-with-circle" class=" text-slate-400 hover:text-slate-500 text-l md:text-2xl" /></a>
+		        <a :href="'http://www.linkedin.com/shareArticle?mini=true&url=https://www.quotesandsayings.net'+localePath('/quotes/')+'/'+data.author.username+'-'+quote.key+'&title='+locale.value =='ar'? t('quotes')+' '+data.author.name : data.author.name+' '+t('quotes')+'&source=quotesandsayings.net'"><Icon name="entypo-social:linkedin-with-circle" class=" text-slate-400 hover:text-slate-500 text-l md:text-2xl" /></a>
 		        <a :href="'http://pinterest.com/pin/create/button/?url=https://www.quotesandsayings.net'+localePath('/quotes/')+'/'+data.author.username+'-'+quote.key+'&media=https://8ooim6.deta.dev/p/'+quote.key+'&description='+quote.text" ><Icon name="entypo-social:pinterest-with-circle" class=" text-slate-400 hover:text-slate-500 text-l md:text-2xl" /></a>
           </div> 
           <ins v-if="index%6==0 && index!= 0" class="adsbygoogle"
