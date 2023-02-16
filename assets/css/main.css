@@ -1,4 +1,21 @@
 @tailwind base;
+@layer base {
+  #content h2,h3 {
+    @apply text-slate-800 font-bold my-2 md:my-4 md:text-xl;
+  }
+  #content p {
+    @apply text-slate-700 my-1 md:my-2;
+  }
+  #content ol li {
+   list-style-position: revert;
+    @apply list-decimal ml-4;
+  }
+  #content ul li {
+   list-style-position: revert;
+    @apply list-disc ml-4;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
 

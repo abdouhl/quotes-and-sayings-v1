@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/i18n','@nuxtjs/supabase','nuxt-schema-org','nuxt-icon',"@nuxt/image-edge","@nuxtjs/tailwindcss"],
+  modules: ['@nuxt/content','@nuxtjs/i18n','@nuxtjs/supabase','nuxt-schema-org','nuxt-icon',"@nuxt/image-edge","@nuxtjs/tailwindcss"],
+  content: {
+    // https://content.nuxtjs.org/api/configuration
+  },
   i18n: {
     locales: [
       {
@@ -75,4 +78,5 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/main.css',
   ],
+  
 })
