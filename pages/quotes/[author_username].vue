@@ -140,8 +140,8 @@ useHead({
           class="mx-auto w-fit h-fit relative"
         >
           <img
-            class="rounded-lg border w-6/12 mx-auto"
-            :src="data.author.profile_banner_url"
+            class="rounded-lg border w-9/12 mx-auto"
+            :src="data.author.profile_banner_url+'/600x200'"
           />
           <img
             class="rounded-full border border-2 border-white h-16 md:h-28 mx-auto absolute -bottom-8 md:-bottom-14 left-1/2 -translate-x-8 md:-translate-x-14"
@@ -162,7 +162,7 @@ useHead({
           />
         </div>
 
-        <h3 class="text-center pt-2 md:text-xl mt-8 md:mt-14">
+        <h3 :dir="t('dir')" class="text-center pt-2 md:text-xl mt-8 md:mt-14">
           {{data.author.name}}
           
           <Icon v-if="data.author.verified" name="material-symbols:verified" class=" text-sky-500 text-sm " />
