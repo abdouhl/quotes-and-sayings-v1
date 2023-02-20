@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/content','@nuxtjs/i18n','@nuxtjs/supabase','nuxt-schema-org','nuxt-icon',"@nuxt/image-edge","@nuxtjs/tailwindcss"],
+  modules: ['@nuxtjs/robots','@nuxt/content','@nuxtjs/i18n','@nuxtjs/supabase','nuxt-schema-org','nuxt-icon',"@nuxt/image-edge","@nuxtjs/tailwindcss"],
   content: {
     // https://content.nuxtjs.org/api/configuration
   },
@@ -73,7 +73,9 @@ export default defineNuxtConfig({
   },
   app: { head: { link: [ {rel: 'icon',href: '/favicon.svg'} ] } },
   robots: {
-    
+  UserAgent: '*',
+  Allow: '/',
+  Sitemap: 'https://www.quotesandsayings.net/sitemap.txt'
   },
   css: [
     '@/assets/css/main.css',

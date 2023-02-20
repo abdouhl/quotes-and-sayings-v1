@@ -16,6 +16,7 @@
     "@nuxt/cli": "^2.15.8",
     "@nuxt/image-edge": "^1.0.0-27840416.dc1ed65",
     "@nuxtjs/i18n": "^8.0.0-beta.7",
+    "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/supabase": "^0.3.0",
     "@nuxtjs/tailwindcss": "^6.2.0",
     "@unocss/preset-icons": "^0.48.0",
