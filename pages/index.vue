@@ -74,10 +74,10 @@ useHead({
 </header>
 <section id="search-section" class="grid content-center h-64 w-full">
 <div class="px-2 md:px-24 lg:px-36 w-full h-fit max-w-5xl mx-auto py-2 md:py-4">
-      <div :dir="t('dir')" id="post-form" class="mt-8 mb-2 w-full flex flex-row gap-2 md:gap-4">
+      <div :dir="$t('dir')" id="post-form" class="mt-8 mb-2 w-full flex flex-row gap-2 md:gap-4">
       
-      <input class="mb-2 p-2 px-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 placeholder-gray-400 focus:placeholder-transparent focus:outline-none" :placeholder="t('search_placeholder')" v-model="user.username">
-      <a class="bg-slate-600 rounded-lg mb-2 p-2 text-white" :href="next_user">{{ t('search') }}</a>
+      <input class="mb-2 p-2 px-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 placeholder-gray-400 focus:placeholder-transparent focus:outline-none" :placeholder="$t('search_placeholder')" v-model="user.username">
+      <a class="bg-slate-600 rounded-lg mb-2 p-2 text-white" :href="next_user">{{ $t('search') }}</a>
       </div>
     </div>
 
@@ -87,7 +87,7 @@ useHead({
 		    <nuxt-img class="rounded-full h-28 mx-auto" :src="author.profile_image" loading="lazy" />
 		    <h3 class="text-center pt-2 md:text-xl truncate" >{{author.name}}</h3>
 		    <p class="text-center text-gray-500 text-xs" >@{{author.screen_name}}</p>
-		    <p class="text-center mt-4 mb-2"><a class="p-2   rounded-lg bg-stone-100 text-white bg-slate-400 text-xs md:text-l font-bold" :href="localePath('/quotes/'+author.screen_name)">{{ t('quotes') }}</a></p>
+		    <p class="text-center mt-4 mb-2"><a class="p-2   rounded-lg bg-stone-100 text-white bg-slate-400 text-xs md:text-l font-bold" :href="localePath('/quotes/'+author.screen_name)">{{ $t('quotes') }}</a></p>
 		  </div>
   </div>
   <div class="w-fit mx-auto  my-2 lg:my-4 text-l sm:text-3xl text-slate-400">
@@ -162,46 +162,6 @@ useHead({
 </div>
 </footer>
 </template>
-<i18n lang="json">
-{
-  "en": {
-    "quotes": "Quotes",
-    "dir": "ltr",
-    "search_placeholder":"Search for Twitter Username",
-    "search":"Search"
-  },
-  "es": {
-    "quotes": "Citas",
-    "dir": "ltr",
-    "search_placeholder":"Buscar nombre de usuario de Twitter",
-    "search":"Buscar"
-  },
-  "fr": {
-    "quotes": "Citations",
-    "dir": "ltr",
-    "search_placeholder":"Rechercher le nom d'utilisateur Twitter",
-    "search":"Recherche"
-  },
-  "de": {
-    "quotes": "Zitate",
-    "dir": "ltr",
-    "search_placeholder":"Suchen Sie nach dem Twitter-Benutzernamen",
-    "search":"Suchen"
-  },
-  "pt": {
-    "quotes": "Citações",
-    "dir": "ltr",
-    "search_placeholder":"Pesquisar nome de usuário do Twitter",
-    "search":"Procurar"
-  },
-  "ar": {
-    "quotes": "أقوال",
-    "dir": "rtl",
-    "search_placeholder":"بحث عن اسم مستخدم تويتر",
-    "search":"بحث"
-  }
-}
-</i18n>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');

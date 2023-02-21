@@ -41,24 +41,12 @@ export default defineNuxtConfig({
 		 legacy: false,
 		 locale: 'en',
 		 messages: {
-			 en: {
-				 title: 'Quotes And Sayings'
-			 },
-			 es: {
-				 title: 'Citas y refranes'
-			 },
-			 fr: {
-				 title: 'Citations et énonciations'
-			 },
-			 de: {
-				 title: 'Zitate und Sprüche'
-			 },
-			 pt: {
-				 title: 'Citações E Provérbios'
-			 },
-			 ar: {
-				 title: 'أقوال و اقتباسات'
-			 }
+			 en: require('./locales/en.json'),
+			 es: require('./locales/es.json'),
+			 fr: require('./locales/fr.json'),
+			 de: require('./locales/de.json'),
+			 pt: require('./locales/pt.json'),
+			 ar: require('./locales/ar.json'),
 		 }
 		}
    },

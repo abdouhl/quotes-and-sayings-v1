@@ -57,18 +57,18 @@ await until(pending).toBe(false)
 
 
 useHead({
-  title: locale.value =="ar"? t('quotes')+' '+data._value.author.name : data._value.author.name+' '+t('quotes'),
+  title: locale.value =="ar"? $t('quotes')+' '+data._value.author.name : data._value.author.name+' '+$t('quotes'),
   meta: [
-    { name: 'title', content: locale.value =="ar"? t('quotes')+' '+data._value.author.name : data._value.author.name+' '+t('quotes') },
-    { name: 'description', content: t('description') +data._value.author.name },
+    { name: 'title', content: locale.value =="ar"? $t('quotes')+' '+data._value.author.name : data._value.author.name+' '+$t('quotes') },
+    { name: 'description', content: $t('description') +data._value.author.name },
     { name: 'robots', content: "index, follow" },
-    { name: 'keywords', content: t('quotes')+", "+data._value.author.name+", "+data._value.author.name+" "+t('quotes') },
+    { name: 'keywords', content: $t('quotes')+", "+data._value.author.name+", "+data._value.author.name+" "+$t('quotes') },
     { name: 'og:type', content: 'article' },
-    { name: 'og:title', content: locale.value =="ar"? t('quotes')+' '+data._value.author.name : data._value.author.name+' '+t('quotes') },
-    { name: 'og:description', content: t('description') +data._value.author.name },
+    { name: 'og:title', content: locale.value =="ar"? $t('quotes')+' '+data._value.author.name : data._value.author.name+' '+$t('quotes') },
+    { name: 'og:description', content: $t('description') +data._value.author.name },
     { name: 'og:image', content: data._value.author.profile_image },
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: locale.value =="ar"? t('quotes')+' '+data._value.author.name : data._value.author.name+' '+t('quotes') },
+    { name: 'twitter:title', content: locale.value =="ar"? $t('quotes')+' '+data._value.author.name : data._value.author.name+' '+$t('quotes') },
     { name: 'twitter:image', content: 'https://8ooim6.deta.dev/'+quote_key },
   ],
   script: [
@@ -162,7 +162,7 @@ useHead({
           />
         </div>
 
-        <h3 :dir="t('dir')" class="text-center pt-2 md:text-xl mt-8 md:mt-14">
+        <h3 :dir="$t('dir')" class="text-center pt-2 md:text-xl mt-8 md:mt-14">
           {{data.author.name}}
           
           <Icon v-if="data.author.verified" name="material-symbols:verified" class=" text-sky-500 text-sm " />
@@ -171,7 +171,7 @@ useHead({
           @{{data.author.username}}
         </p>
       </div>
-      <div :dir="t('dir')" class="mt-2 md:mt-4 divide-y divide-slate-200">
+      <div :dir="$t('dir')" class="mt-2 md:mt-4 divide-y divide-slate-200">
         <div class="md:text-2xl text-slate-800 p-2 md:p-4 pb-1 md:pb-2 w-full" v-for="(quote, index) in data.quotes_list" >
           <p class="whitespace-pre-line">{{quote.text}}</p>
           <div class="flex flex-row-reverse gap-2 pt-1 md:pt-2">
@@ -199,40 +199,7 @@ useHead({
   </div>
 
 </template>
-<i18n lang="json">
-{
-  "en": {
-    "quotes": "Quotes",
-    "description": "Handpicked collection of the best quotes and tweets by ",
-    "dir": "ltr"
-  },
-  "es": {
-    "quotes": "Citas",
-    "description": "Colección cuidadosamente seleccionada de las mejores citas y tweets por ",
-    "dir": "ltr"
-  },
-  "fr": {
-    "quotes": "Citations",
-    "description": "Collection triée sur le volet des meilleures citations et tweets de ",
-    "dir": "ltr"
-  },
-  "de": {
-    "quotes": "Zitate",
-    "description": "Handverlesene Sammlung der besten Zitate und Tweets von ",
-    "dir": "ltr"
-  },
-  "pt": {
-    "quotes": "Citações",
-    "description": "Coleção escolhida a dedo das melhores citações e tweets por ",
-    "dir": "ltr"
-  },
-  "ar": {
-    "quotes": "أقوال",
-    "description": "مجموعة منتقاة بعناية من أفضل اقتباسات وتغريدات ",
-    "dir": "rtl"
-  }
-}
-</i18n>
+
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
