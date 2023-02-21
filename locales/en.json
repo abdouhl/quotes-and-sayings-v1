@@ -2,6 +2,7 @@
     "title": "Quotes And Sayings",
     "quotes": "Quotes",
     "description": "Handpicked collection of the best quotes and tweets by ",
+    "site_description": "Handpicked collection of inspirational quotes from famous celebrities, athletes, politicians, authors",
     "dir": "ltr",
     "search_placeholder":"Search for Twitter Username",
     "search":"Search"

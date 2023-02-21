@@ -16,6 +16,24 @@ const availableLocales = computed(() => {
 
 const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+locale.value,{key: page_id})
 
+useHead({
+  title: t('title'),
+  meta: [
+    { name: 'title', content: t('title') },
+    { name: 'description', content: t('site_description')  },
+    { name: 'robots', content: "index, follow" },
+    { name: 'og:type', content: 'website' },
+    { name: 'og:title', content: t('title') },
+    { name: 'og:description', content: t('site_description')  },
+    { name: 'og:image', content: "https://www.quotesandsayings.net/screen-"+locale.value+".png" },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: t('title') },
+    { name: 'twitter:image', content: "https://www.quotesandsayings.net/screen-"+locale.value+".png" },
+  ],
+  htmlAttrs: {
+    lang: locale.value,
+  }
+})
 </script>
 
 <template>

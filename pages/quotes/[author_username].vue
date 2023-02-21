@@ -72,7 +72,6 @@ useHead({
     { name: 'twitter:image', content: 'https://8ooim6.deta.dev/'+quote_key },
   ],
   script: [
-    {src: 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js'},  
     {src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3610150616518651',async:'',crossorigin: "anonymous"}
   ]
 })
