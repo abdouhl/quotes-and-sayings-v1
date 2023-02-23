@@ -97,7 +97,7 @@ useHead({
 </section>
 
 
-<div class="bg-white grid mx-auto w-fit grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-2 mt-2 md:mt-4 p-2">
+<div class="bg-white grid mx-auto w-fit grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-2 my-2 md:my-4 p-2">
   <div class="p-2" v-for="topic in topics" >
     <a class="text-center text-slate-600 text-s md:text-l" :href="'/topics/'+topic" >{{topic}}</a>
   </div>
