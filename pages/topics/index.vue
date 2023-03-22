@@ -13,7 +13,7 @@ const availableLocales = computed(() => {
 })
 
 
-const topics = ['Age', 'Alone', 'Amazing', 'Anger', 'Anniversary', 'Architecture', 'Art', 'Attitude', 'Beauty', 'Best', 'Birthday', 'Brainy', 'Business', 'Car', 'Chance', 'Change', 'Christmas', 'Communication', 'Computers', 'Cool', 'Courage', 'Dad', 'Dating', 'Death', 'Design', 'Diet', 'Dreams', 'Easter', 'Education', 'Environmental', 'Equality', 'Experience', 'Experience', 'Failure', 'Faith', 'Family', 'Famous', "Father's Day", 'Fear', 'Finance', 'Fitness', 'Food', 'Forgiveness', 'Freedom', 'Friendship', 'Funny', 'Future', 'Gardening', 'God', 'Good', 'Government', 'Graduation', 'Great', 'Happiness', 'Health', 'History', 'Home', 'Hope', 'Humor', 'Imagination', 'Independence', 'Inspirational', 'Intelligence', 'Jealousy', 'Jealousy', 'Knowledge', 'Leadership', 'Learning', 'Legal', 'Life', 'Love', 'Marriage', 'Medical', 'Memorial Day', 'Men', 'Mom', 'Money', 'Morning', "Mother's Day", 'Motivational', 'Movies', 'Moving On', 'Music', 'Nature', "New Year's", 'Parenting', 'Patience', 'Patriotism', 'Peace', 'Pet', 'Poetry', 'Politics', 'Positive', 'Power', 'Relationship', 'Religion', 'Religion', 'Respect', 'Romantic', 'Sad', "Saint Patrick's Day", 'Science', 'Smile', 'Society', 'Space', 'Sports', 'Strength', 'Success', 'Sympathy', 'Teacher', 'Technology', 'Teen', 'Thankful', 'Thanksgiving', 'Time', 'Travel', 'Trust', 'Truth', "Valentine's Day", 'Veterans Day', 'War', 'Wedding', 'Wisdom', 'Women', 'Work']
+const topics = t('topics').split(',')
 const pending = false
 const topic = reactive({ topic:"" })
 var next_topic =null
@@ -89,7 +89,7 @@ useHead({
 <div class="px-2 md:px-24 lg:px-36 w-full h-fit max-w-5xl mx-auto py-2 md:py-4">
       <div :dir="$t('dir')" id="post-form" class="mt-8 mb-2 w-full flex flex-row gap-2 md:gap-4">
       
-      <input class="mb-2 p-2 px-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 placeholder-gray-400 focus:placeholder-transparent focus:outline-none" :placeholder="$t('search_placeholder')" v-model="topic.topic">
+      <input class="mb-2 p-2 px-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 placeholder-gray-400 focus:placeholder-transparent focus:outline-none" :placeholder="$t('topic_search_placeholder')" v-model="topic.topic">
       <a class="bg-slate-600 rounded-lg mb-2 p-2 text-white" :href="next_topic">{{ $t('search') }}</a>
       </div>
     </div>
@@ -97,9 +97,9 @@ useHead({
 </section>
 
 
-<div class="bg-white grid mx-auto w-fit grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-2 my-2 md:my-4 p-2">
+<div :dir="$t('dir')" class="bg-white grid mx-auto w-fit grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-2 my-2 md:my-4 p-2">
   <div class="p-2" v-for="topic in topics" >
-    <a class="text-center text-slate-600 text-s md:text-l" :href="'/topics/'+topic" >{{topic}}</a>
+    <a class="text-center text-slate-600 text-s md:text-l" :href="localePath('/topics/'+topic)" >{{topic}}</a>
   </div>
 </div>
 

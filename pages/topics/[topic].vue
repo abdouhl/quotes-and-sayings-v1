@@ -39,7 +39,34 @@ onMounted(async () => {
 })
 
 
+useSchemaOrg([
+	defineWebSite({
+    name: 'quotes and sayings',
+  }),
+  defineWebPage(),
+])
 
+await until(pending).toBe(false)
+
+
+useHead({
+  title: t('quotes_about') + topic,
+  meta: [
+    { name: 'title', content: t('quotes_about') + topic },
+    { name: 'description', content: t('topic_description') +topic },
+    { name: 'robots', content: "index, follow" },
+    { name: 'keywords', content: topic+", "+t('quotes') },
+    { name: 'og:type', content: 'article' },
+    { name: 'og:title', content: t('quotes_about') + topic },
+    { name: 'og:description', content: t('topic_description') +topic },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: t('quotes_about') + topic },
+    { name: 'twitter:image', content: "https://www.quotesandsayings.net/screen-"+locale.value+".png" },
+  ],
+  script: [
+    {src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3610150616518651',async:'',crossorigin: "anonymous"}
+  ]
+})
 
 
 
@@ -98,6 +125,15 @@ onMounted(async () => {
     </ul>
   </nav>
 </header>
+<section id="search-section" class="grid content-center h-64 w-full">
+<div class="px-2 md:px-24 lg:px-36 w-full h-fit max-w-5xl mx-auto py-2 md:py-4">
+      <div :dir="$t('dir')" class="grid content-center justify-center mt-8 mb-2 w-full">
+      
+      <h1 class="mb-2 p-2 px-4 w-fit md:text-2xl text-slate-800 font-bold bg-slate-300 rounded-lg text-center">{{ $t('quotes_about') + topic }}</h1>
+      </div>
+    </div>
+
+</section>
     <div class="px-2 md:px-24 lg:px-36 w-full max-w-7xl mx-auto py-2 md:py-4">
  
       <div :dir="t('dir')" class="mt-2 md:mt-4 divide-y divide-slate-200">
