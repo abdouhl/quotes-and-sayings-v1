@@ -6,14 +6,14 @@ const { locale, locales, t } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const localePath = useLocalePath()
 
-const nav = reactive({ lang: false })
+const nav = reactive({ lang: false ,opts: false })
 
 const availableLocales = computed(() => {
   return (locales.value).filter(i => i.code !== locale.value)
 })
 
 
-const topics = t('topics').split(',')
+const topics = t('topics_list').split(',')
 const pending = false
 const topic = reactive({ topic:"" })
 var next_topic =null
@@ -64,11 +64,19 @@ useHead({
       <svg class="w-10 mr-2" fill="currentColor" viewBox="0 0 121.5 114.7" xmlns="http://www.w3.org/2000/svg">
         <path d="m 0.5 65 c -5 -62.5 77.5 -92.5 110 -30 h -17.5 c -7.5 -20 -62.5 -37.5 -76.25 15 h 40 l 65 65 h -21.25 l -10 -10 c -35 22.5 -75 5 -85 -25 h 17.5 c 7.5 15 30 27.5 55.75 13.75 l -28.25 -28.75 z m 70 -15 h 43.5 c 1.5 5 1.5 20 -7 36.5 z"/>
       </svg>
-      <pre class="font-mono font-bold text-sm">{{ $t('title') }}</pre>
+      <pre class="hidden sm:block font-mono font-bold text-sm">{{ $t('title') }}</pre>
     </a>
   </div>
   <nav class="absolute top-0 right-0 mt-3 md:w-auto py-1 px-2">
     <ul class="flex justify-end items-start text-slate-900 text-sm text-center">
+      <li class="md:w-auto mx-2 px-2 bg-white border border-slate-300 rounded">
+        <div class="w-16 md:w-24">
+          <a href="#" class="block py-1 px-1" @click.prevent="nav.opts=!nav.opts">{{ $t('topics') }}</a>
+          <ul v-if="nav.opts" class="my-2 text-sm leading-loose text-center">
+						<li ><a :key="authors" :href="localePath('/')">{{ $t('authors') }}</a></li>
+						</ul>
+        </div>
+      </li>
       <li class="md:w-auto mx-2 px-2 bg-white border border-slate-300 rounded">
         <div class="w-16 md:w-24">
           <a href="#" class="block py-1 px-1" @click.prevent="nav.lang=!nav.lang">{{locales.map(i=>i.name)[locales.map(i=>i.code).indexOf(locale)]}}</a>
@@ -141,3 +149,4 @@ background-color: #f1f5f9;
 }
 
 </style>
+

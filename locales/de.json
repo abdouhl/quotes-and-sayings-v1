@@ -1,6 +1,8 @@
 {
     "title": "Zitate und Sprüche",
     "quotes": "Zitate",
+    "topics": "Themen",
+    "authors": "Autoren",
     "quotes_about": "Zitate über ",
     "topic_description": "Handverlesene Sammlung der besten Zitate und Tweets über ",
     "description": "Handverlesene Sammlung der besten Zitate und Tweets von ",
@@ -8,6 +10,6 @@
     "dir": "ltr",
     "search_placeholder":"Suchen Sie nach dem Twitter-Benutzernamen",
     "topic_search_placeholder":"Suchen Sie nach Thema",
-    "topics":"Alter,Alleine,Erstaunlich,Wut,Jahrestag,Architektur,Kunst,Einstellung,Schönheit,Beste,Geburtstag,Klug, Business,Auto,Chance,Veränderung,Weihnachten,Kommunikation,Computer,Cool,Mut,Papa,Dating,Tod,Design,Ernährung,Träume,Ostern,Bildung,Umwelt,Gleichberechtigung,Erfahrung,Erfahrung,Versagen,Glaube,Familie,Berühmt, Vatertag,Angst,Finanzen,Fitness,Essen,Vergebung,Freiheit,Freundschaft,Lustig,Zukunft,Gartenarbeit,Gott,Gut ,Regierung,Abschluss,Großartig,Glück,Gesundheit,Geschichte,Zuhause,Hoffnung,Humor,Fantasie,Unabhängigkeit,Inspirierend,Intelligenz,Eifersucht,Eifersucht,Wissen,Führung,Lernen,Recht,Leben,Liebe,Ehe,Medizin,Gedenktag, Männer,Mama,Geld,Morgen,Muttertag,Motivation,Filme,Weitermachen,Musik,Natur,Neujahr,Eltern,Geduld,Patriotismus,Frieden,Haustier,Poesie,Politik,Positiv,Macht,Beziehung,Religion,Religion,Respekt,Romantisch,Traurig,Saint Patrick's Day,Wissenschaft,Lächeln,Gesellschaft,Weltraum,Sport,Stärke,Erfolg,Sympathie,Lehrer,Technologie,Teenager,Dankbar,Danksagung,Zeit,Reisen,Vertrauen,Wahrheit,Valentinstag,Veteranentag,Krieg,Hochzeit,Weisheit,Frauen,Arbeit",
+    "topics_list":"Alter,Alleine,Erstaunlich,Wut,Jahrestag,Architektur,Kunst,Einstellung,Schönheit,Beste,Geburtstag,Klug, Business,Auto,Chance,Veränderung,Weihnachten,Kommunikation,Computer,Cool,Mut,Papa,Dating,Tod,Design,Ernährung,Träume,Ostern,Bildung,Umwelt,Gleichberechtigung,Erfahrung,Erfahrung,Versagen,Glaube,Familie,Berühmt, Vatertag,Angst,Finanzen,Fitness,Essen,Vergebung,Freiheit,Freundschaft,Lustig,Zukunft,Gartenarbeit,Gott,Gut ,Regierung,Abschluss,Großartig,Glück,Gesundheit,Geschichte,Zuhause,Hoffnung,Humor,Fantasie,Unabhängigkeit,Inspirierend,Intelligenz,Eifersucht,Eifersucht,Wissen,Führung,Lernen,Recht,Leben,Liebe,Ehe,Medizin,Gedenktag, Männer,Mama,Geld,Morgen,Muttertag,Motivation,Filme,Weitermachen,Musik,Natur,Neujahr,Eltern,Geduld,Patriotismus,Frieden,Haustier,Poesie,Politik,Positiv,Macht,Beziehung,Religion,Religion,Respekt,Romantisch,Traurig,Saint Patrick's Day,Wissenschaft,Lächeln,Gesellschaft,Weltraum,Sport,Stärke,Erfolg,Sympathie,Lehrer,Technologie,Teenager,Dankbar,Danksagung,Zeit,Reisen,Vertrauen,Wahrheit,Valentinstag,Veteranentag,Krieg,Hochzeit,Weisheit,Frauen,Arbeit",
     "search":"Suchen"
 }
