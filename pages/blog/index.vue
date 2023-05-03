@@ -6,7 +6,7 @@ const { locale, locales, t } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const localePath = useLocalePath()
 
-const nav = reactive({ lang: false })
+const nav = reactive({ lang: false ,opts: false })
 
 const availableLocales = computed(() => {
   return (locales.value).filter(i => i.code !== locale.value)
@@ -35,6 +35,16 @@ console.log('dd',navigation)
     <ul class="flex justify-end items-start text-slate-900 text-sm text-center">
       <li class="md:w-auto mx-2 px-2 bg-white border border-slate-300 rounded">
         <div class="w-16 md:w-24">
+          <a href="#" class="block py-1 px-1" @click.prevent="nav.opts=!nav.opts">{{ $t('blog') }}</a>
+          <ul v-if="nav.opts" class="my-2 text-sm leading-loose text-center">
+						<li ><a :key="authors" :href="localePath('/')">{{ $t('authors') }}</a></li>
+						<li ><a :key="topics" :href="localePath('/topics')">{{ $t('topics') }}</a></li>
+						<li ><a :key="shop" :href="localePath('/shop')">{{ $t('shop') }}</a></li>
+						</ul>
+        </div>
+      </li>
+      <li class="md:w-auto mx-2 px-2 bg-white border border-slate-300 rounded">
+        <div class="w-16 md:w-24">
           <a href="#" class="block py-1 px-1" @click.prevent="nav.lang=!nav.lang">{{locales.map(i=>i.name)[locales.map(i=>i.code).indexOf(locale)]}}</a>
           <ul v-if="nav.lang" class="my-2 text-sm leading-loose text-center">
 						<li v-for="locale in availableLocales" ><a :key="locale.code" :href="switchLocalePath(locale.code)">{{locale.name}}</a></li>
@@ -50,7 +60,7 @@ console.log('dd',navigation)
   </nav>
 </header>
 
-<section class="w-screen grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
+<section class="w-full grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
 
 <div v-for="section in navigation[0].children[0].children.slice(1,)" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
 <h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;">{{section.title}}</h2>
