@@ -74,6 +74,8 @@ useHead({
           <a href="#" class="block py-1 px-1" @click.prevent="nav.opts=!nav.opts">{{ $t('topics') }}</a>
           <ul v-if="nav.opts" class="my-2 text-sm leading-loose text-center">
 						<li ><a :key="authors" :href="localePath('/')">{{ $t('authors') }}</a></li>
+						<li ><a :key="blog" :href="localePath('/blog')">{{ $t('blog') }}</a></li>
+						<li ><a :key="shop" :href="localePath('/shop')">{{ $t('shop') }}</a></li>
 						</ul>
         </div>
       </li>
