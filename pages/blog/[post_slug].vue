@@ -47,8 +47,18 @@ const { data: post } = await useAsyncData('home', () => queryContent('/'+locale.
     </ul>
   </nav>
 </header>
+<section id="search-section" class="grid content-center h-64 w-full">
+<div class="px-2 md:px-24 lg:px-36 w-full h-fit max-w-5xl mx-auto py-2 md:py-4">
+      <div :dir="$t('dir')" class="grid content-center justify-center mt-8 mb-2 w-full">
+      <h1 class="mb-2 p-2 px-4 w-fit md:text-2xl text-slate-800 font-bold bg-slate-300 rounded-lg text-center">{{post.title}}</h1>
+      </div>
+      <div :dir="$t('dir')" class="grid content-center justify-center mt-2 mb-2 w-full">
+      <p class="mb-2 p-2 px-4 w-fit text-xs md:text-sm text-slate-600 font-bold bg-slate-300 rounded-lg text-center">{{post.description}}</p>
+      </div>
+    </div>
+
+</section>
 <div id="content" class="px-2 md:px-24 lg:px-36 w-full max-w-5xl mx-auto py-2 md:py-4">
-<h1 class="inline font-bold text-xl md:text-2xl">{{post.title}}:</h1><span class="font-bold text-l md:text-xl">{{post.description}}</span>
 <ContentRenderer :value="post" />
 </div>
 <footer class="w-full">
