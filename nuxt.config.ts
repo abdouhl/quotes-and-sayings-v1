@@ -36,10 +36,10 @@ export default defineNuxtConfig({
         dir: "rtl"
       }
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'ar',
 		vueI18n: {
 		 legacy: false,
-		 locale: 'en',
+		 locale: 'ar',
 		 messages: {
 			 en: require('./locales/en.json'),
 			 es: require('./locales/es.json'),

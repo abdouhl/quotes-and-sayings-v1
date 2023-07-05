@@ -1,80 +1,57 @@
 <script setup>
 import { useI18n } from '#imports'
 
-const page_id = "1"
+
 const { locale, locales, t } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const localePath = useLocalePath()
 
 const nav = reactive({ lang: false ,opts: false })
+const page_id = '1'
+var pagintion_nums = []
+
+
+
 
 const availableLocales = computed(() => {
   return (locales.value).filter(i => i.code !== locale.value)
 })
 
+//const { data } = await useAsyncData('home', () => queryContent('/en/blog').where({ _dir: "blog" }).only(['title','_path']).find())
+const query = queryContent({where: {_path: { $contains: '/'+locale.value }}})
 
-const {pending,data} = useLazyFetch(useRuntimeConfig().apiUrl+'p/'+page_id+'/'+locale.value,{key: page_id})
 
-const user = reactive({ username:"" })
-var next_user =null
-next_user = computed(() => {
+const { data: quotes_list } = await useAsyncData('home', () => queryContent('/'+locale.value+'/quotes').find())
+console.log('dd',quotes_list._rawValue[0].body.length)
 
-    if(!user.username){
-    return null
-    }else{
-    return  localePath("/quotes/"+user.username)
-    }
-})
-useHead({
-  title: t('title'),
-  meta: [
-    { name: 'title', content: t('title') },
-    { name: 'description', content: t('site_description')  },
-    { name: 'robots', content: "index, follow" },
-    { name: 'og:type', content: 'website' },
-    { name: 'og:title', content: t('title') },
-    { name: 'og:description', content: t('site_description')  },
-    { name: 'og:image', content: "https://www.quotesandsayings.net/screen-"+locale.value+".png" },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: t('title') },
-    { name: 'twitter:image', content: "https://www.quotesandsayings.net/screen-"+locale.value+".png" },
-  ],
-  htmlAttrs: {
-    lang: locale.value,
-  }
-})
+const pages_count = quotes_list._rawValue[0].body.length%15==0 ? parseInt(quotes_list._rawValue[0].body.length/15) :parseInt(quotes_list._rawValue[0].body.length/15) +1
 
+
+pagintion_nums =[2,3,4,5,6]
+
+
+console.log('pp',pagintion_nums)
 
 </script>
 
 <template>
-<div v-if="pending" class="w-screen h-screen grid content-center justify-center">
-<div role="status" class="w-fit ">
-    <svg class="inline mr-2 w-16 h-16 text-stone-100 animate-spin  fill-black  mx-auto" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-    </svg>
-    <span class="sr-only">Loading...</span>
-</div>
-</div>
-  <div v-else>
-    <header class="items-center bg-white shadow-lg border-t-4 border-slate-700">
+<header class="items-center bg-white shadow-lg border-t-4 border-slate-700">
   <div class="flex flex-1 items-center p-3">
     <a class="flex items-center font-mono tracking-tighter text-slate-700 hover:text-slate-800" :href="localePath('/')">
       <svg class="w-10 mr-2" fill="currentColor" viewBox="0 0 121.5 114.7" xmlns="http://www.w3.org/2000/svg">
         <path d="m 0.5 65 c -5 -62.5 77.5 -92.5 110 -30 h -17.5 c -7.5 -20 -62.5 -37.5 -76.25 15 h 40 l 65 65 h -21.25 l -10 -10 c -35 22.5 -75 5 -85 -25 h 17.5 c 7.5 15 30 27.5 55.75 13.75 l -28.25 -28.75 z m 70 -15 h 43.5 c 1.5 5 1.5 20 -7 36.5 z"/>
       </svg>
-      <pre class="hidden sm:block font-mono font-bold text-sm">{{ $t('title') }}</pre>
+      <pre class="font-mono font-bold text-sm">{{ $t('title') }}</pre>
     </a>
   </div>
   <nav class="absolute top-0 right-0 mt-3 md:w-auto py-1 px-2">
     <ul class="flex justify-end items-start text-slate-900 text-sm text-center">
       <li class="md:w-auto mx-2 px-2 bg-white border border-slate-300 rounded">
         <div class="w-16 md:w-24">
-          <a href="#" class="block py-1 px-1" @click.prevent="nav.opts=!nav.opts">{{ $t('authors') }}</a>
+          <a href="#" class="block py-1 px-1" @click.prevent="nav.opts=!nav.opts">{{ $t('blog') }}</a>
           <ul v-if="nav.opts" class="my-2 text-sm leading-loose text-center">
+						<li ><a :key="authors" :href="localePath('/')">{{ $t('authors') }}</a></li>
 						<li ><a :key="topics" :href="localePath('/topics')">{{ $t('topics') }}</a></li>
-						<li ><a :key="blog" :href="localePath('/blog')">{{ $t('blog') }}</a></li>
 						<li ><a :key="shop" :href="localePath('/shop')">{{ $t('shop') }}</a></li>
 						</ul>
         </div>
@@ -95,25 +72,17 @@ useHead({
     </ul>
   </nav>
 </header>
-<section id="search-section" class="grid content-center h-64 w-full">
-<div class="px-2 md:px-24 lg:px-36 w-full h-fit max-w-5xl mx-auto py-2 md:py-4">
-      <div :dir="$t('dir')" id="post-form" class="mt-8 mb-2 w-full flex flex-row gap-2 md:gap-4">
-      
-      <input class="mb-2 p-2 px-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 placeholder-gray-400 focus:placeholder-transparent focus:outline-none" :placeholder="$t('search_placeholder')" v-model="user.username">
-      <a class="bg-slate-600 rounded-lg mb-2 p-2 text-white" :href="next_user">{{ $t('search') }}</a>
-      </div>
-    </div>
+
+<section :dir="$t('dir')"  class="w-full grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
+
+<div v-for="quote in quotes_list[0].body.slice(0,15)" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
+<p class="p-1 md:p-2">{{quote.text}}</p>
+<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;">{{quote.username}}</h2>
+</div>
 
 </section>
-		<div class="grid mx-auto w-fit grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-8 mt-2 md:mt-4 px-2 md:px-24 lg:px-36">
-		  <div class="aspect-square  max-h-60   rounded-lg bg-white p-2" v-for="author in data.authors" >
-		    <nuxt-img class="rounded-full h-28 mx-auto" :src="author.profile_image" loading="lazy" />
-		    <h3 class="text-center pt-2 md:text-xl truncate" >{{author.name}}</h3>
-		    <p class="text-center text-gray-500 text-xs" >@{{author.screen_name}}</p>
-		    <p class="text-center mt-4 mb-2"><a class="p-2   rounded-lg bg-stone-100 text-white bg-slate-400 text-xs md:text-l font-bold" :href="localePath('/quotes/'+author.screen_name)">{{ $t('quotes') }}</a></p>
-		  </div>
-  </div>
-  <div class="w-fit mx-auto  my-2 lg:my-4 text-l sm:text-3xl text-slate-400">
+
+<div class="w-fit mx-auto  my-2 lg:my-4 text-l sm:text-3xl text-slate-400">
   	<div class="w-fit flex justify-center sm:gap-2  items-center">
   	
   	
@@ -132,21 +101,21 @@ useHead({
       </svg></div>
       
       
-  		<div v-for="pagintion_num in data.pagintion_nums" class="my-2 mx-1 align-top font-bold" ><a :class="page_id == pagintion_num ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != pagintion_num ?'/'+pagintion_num : null)">
+  		<div v-for="pagintion_num in pagintion_nums" class="my-2 mx-1 align-top font-bold" ><a :class="page_id == pagintion_num ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != pagintion_num ?'/'+pagintion_num : null)">
   		   {{pagintion_num}}
   		</a></div>      
       
       
       
-  		<div v-if="parseInt(page_id) <= data.pages_count-4" class="my-2 mx-1" ><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 bi bi-three-dots" viewBox="0 0 16 16">
+  		<div v-if="parseInt(page_id) <= pages_count-4" class="my-2 mx-1" ><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 bi bi-three-dots" viewBox="0 0 16 16">
         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
       </svg></div> 
        		
-  		<div class="my-2 mx-1 align-top font-bold" ><a :class="page_id == data.pages_count ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']"  :href="localePath(page_id != data.pages_count ?'/'+data.pages_count: null)">
-  		{{data.pages_count}}
+  		<div class="my-2 mx-1 align-top font-bold" ><a :class="page_id == pages_count ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']"  :href="localePath(page_id != pages_count ?'/'+pages_count: null)">
+  		{{pages_count}}
   		</a></div>
   		
-  		<div class="my-2 mx-1" ><a :class="page_id == data.pages_count ? ['cursor-not-allowed','text-slate-300'] : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != data.pages_count ?'/'+(parseInt(page_id)+1) : null)">
+  		<div class="my-2 mx-1" ><a :class="page_id == pages_count ? ['cursor-not-allowed','text-slate-300'] : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != pages_count ?'/'+(parseInt(page_id)+1) : null)">
   		<svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" fill="currentColor" class="w-4 sm:w-8 bi bi-chevron-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
       </svg>
@@ -154,9 +123,6 @@ useHead({
   		
   	</div>
   </div>
-  	
-  </div>
-
 
 
 <footer class="w-full">
@@ -185,6 +151,10 @@ useHead({
 </div>
 </footer>
 </template>
+<i18n lang="json">
+
+
+</i18n>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
@@ -195,3 +165,4 @@ background-color: #f1f5f9;
 }
 
 </style>
+
