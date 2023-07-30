@@ -20,9 +20,9 @@ const availableLocales = computed(() => {
 //const { data } = await useAsyncData('home', () => queryContent('/en/blog').where({ _dir: "blog" }).only(['title','_path']).find())
 const query = queryContent({where: {_path: { $contains: '/'+locale.value }}})
 
-
+const { data: authors_list } = await useAsyncData('home', () => queryContent('/'+locale.value+'/authors').find())
 const { data: quotes_list } = await useAsyncData('home', () => queryContent('/'+locale.value+'/quotes').find())
-console.log('dd',quotes_list._rawValue[0].body.length)
+
 
 const pages_count = quotes_list._rawValue[0].body.length%15==0 ? parseInt(quotes_list._rawValue[0].body.length/15) :parseInt(quotes_list._rawValue[0].body.length/15) +1
 
@@ -30,7 +30,27 @@ const pages_count = quotes_list._rawValue[0].body.length%15==0 ? parseInt(quotes
 pagintion_nums =[2,3,4,5,6]
 
 
-console.log('pp',pagintion_nums)
+useHead({
+  title: t('title'),
+  meta: [
+    { name: 'title', content: t('title') },
+    { name: 'description', content: t('site_description')  },
+    { name: 'robots', content: "index, follow" },
+    { name: 'og:type', content: 'website' },
+    { name: 'og:title', content: t('title') },
+    { name: 'og:description', content: t('site_description')  },
+    { name: 'og:image', content: "https://www.quotesandsayings.net/screen-"+locale.value+".png" },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: t('title') },
+    { name: 'twitter:image', content: "https://www.quotesandsayings.net/screen-"+locale.value+".png" },
+  ],
+  htmlAttrs: {
+    lang: locale.value,
+  },
+  script: [
+    {src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3610150616518651',async:'',crossorigin: "anonymous"}
+  ]
+})
 
 </script>
 
@@ -77,7 +97,7 @@ console.log('pp',pagintion_nums)
 
 <div v-for="quote in quotes_list[0].body.slice(0,15)" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
 <p class="p-1 md:p-2">{{quote.text}}</p>
-<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;">{{quote.username}}</h2>
+<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;"><a :href="localePath('/quotes/'+quote.username)" >{{quote.name}}</a></h2>
 </div>
 
 </section>
