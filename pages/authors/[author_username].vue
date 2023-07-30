@@ -7,11 +7,7 @@ const switchLocalePath = useSwitchLocalePath()
 const localePath = useLocalePath()
 
 const nav = reactive({ lang: false ,opts: false })
-const page_id = '1'
-var pagintion_nums = []
-
-
-
+const {author_username} = useRoute().params
 
 const availableLocales = computed(() => {
   return (locales.value).filter(i => i.code !== locale.value)
@@ -20,14 +16,9 @@ const availableLocales = computed(() => {
 //const { data } = await useAsyncData('home', () => queryContent('/en/blog').where({ _dir: "blog" }).only(['title','_path']).find())
 const query = queryContent({where: {_path: { $contains: '/'+locale.value }}})
 
-const { data: authors_list } = await useAsyncData('home', () => queryContent('/'+locale.value+'/authors').find())
+
 const { data: quotes_list } = await useAsyncData('home', () => queryContent('/'+locale.value+'/quotes').find())
 
-
-const pages_count = quotes_list._rawValue[0].body.length%15==0 ? parseInt(quotes_list._rawValue[0].body.length/15) :parseInt(quotes_list._rawValue[0].body.length/15) +1
-
-
-pagintion_nums =[2,3,4,5,6]
 
 
 useHead({
@@ -51,7 +42,6 @@ useHead({
     {src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3610150616518651',async:'',crossorigin: "anonymous"}
   ]
 })
-
 </script>
 
 <template>
@@ -93,56 +83,15 @@ useHead({
   </nav>
 </header>
 
-<section :dir="$t('dir')"  class="w-full grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
+<section :dir="$t('dir')" class="w-full grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
 
-<div v-for="quote in quotes_list[0].body.slice(0,15)" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
-<p class="p-1 md:p-2"><a :href="localePath('/quotes/'+quote.key)" >{{quote.text}}</a></p>
-<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;"><a :href="localePath('/authors/'+quote.username)" >{{quote.name}}</a></h2>
+<div v-for="quote in quotes_list[0].body.filter(l => l['username'] == author_username )" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
+<p class="p-1 md:p-2">{{quote.text}}</p>
+<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;">{{quote.name}}</h2>
 </div>
 
 </section>
 
-<div class="w-fit mx-auto  my-2 lg:my-4 text-l sm:text-3xl text-slate-400">
-  	<div class="w-fit flex justify-center sm:gap-2  items-center">
-  	
-  	
-  		<div class="my-2 mx-1 "><a  :class="page_id == '1' ? ['cursor-not-allowed','text-slate-300'] : ['text-slate-400','hover:text-slate-500']"  :href="localePath(page_id != '1' ?'/'+(parseInt(page_id)-1) : null)">
-  		<svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" fill="currentColor" class="w-4 sm:w-8 bi bi-chevron-left" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-      </svg>
-  		</a></div>
-  		
-  		<div class="my-2 mx-1 align-top font-bold" ><a :class="page_id == '1' ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != '1' ?'/1' : null)">
-  		1
-  		</a></div>
-  		
-  		<div v-if="parseInt(page_id) >= 5" class="my-2 mx-1" ><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 bi bi-three-dots" viewBox="0 0 16 16">
-        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-      </svg></div>
-      
-      
-  		<div v-for="pagintion_num in pagintion_nums" class="my-2 mx-1 align-top font-bold" ><a :class="page_id == pagintion_num ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != pagintion_num ?'/'+pagintion_num : null)">
-  		   {{pagintion_num}}
-  		</a></div>      
-      
-      
-      
-  		<div v-if="parseInt(page_id) <= pages_count-4" class="my-2 mx-1" ><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 bi bi-three-dots" viewBox="0 0 16 16">
-        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-      </svg></div> 
-       		
-  		<div class="my-2 mx-1 align-top font-bold" ><a :class="page_id == pages_count ? 'text-slate-700' : ['text-slate-400','hover:text-slate-500']"  :href="localePath(page_id != pages_count ?'/'+pages_count: null)">
-  		{{pages_count}}
-  		</a></div>
-  		
-  		<div class="my-2 mx-1" ><a :class="page_id == pages_count ? ['cursor-not-allowed','text-slate-300'] : ['text-slate-400','hover:text-slate-500']" :href="localePath(page_id != pages_count ?'/'+(parseInt(page_id)+1) : null)">
-  		<svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" fill="currentColor" class="w-4 sm:w-8 bi bi-chevron-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-      </svg>
-  		</a></div>
-  		
-  	</div>
-  </div>
 
 
 <footer class="w-full">
@@ -185,4 +134,5 @@ background-color: #f1f5f9;
 }
 
 </style>
+
 

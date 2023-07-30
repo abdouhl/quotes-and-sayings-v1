@@ -7,7 +7,7 @@ const switchLocalePath = useSwitchLocalePath()
 const localePath = useLocalePath()
 
 const nav = reactive({ lang: false ,opts: false })
-const {author_username} = useRoute().params
+const {quote_key} = useRoute().params
 
 const availableLocales = computed(() => {
   return (locales.value).filter(i => i.code !== locale.value)
@@ -83,11 +83,19 @@ useHead({
   </nav>
 </header>
 
-<section :dir="$t('dir')" class="w-full grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
+<section :dir="$t('dir')" class="w-full grid mx-auto  grid-cols-1 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
+<div v-for="quote in quotes_list[0].body.filter(l => l['key'] == quote_key )" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
+<p class="p-1 md:p-2">{{quote.text}}</p>
+<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;">{{quote.name}}</h2>
+</div>
 
+
+</section>
+
+<section :dir="$t('dir')" class="w-full grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
 <div v-for="quote in quotes_list[0].body.filter(l => l['username'] == author_username )" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
 <p class="p-1 md:p-2">{{quote.text}}</p>
-<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;"><a :href="localePath('/quotes/'+quote.username)" >{{quote.name}}</a></h2>
+<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;">{{quote.name}}</h2>
 </div>
 
 </section>
