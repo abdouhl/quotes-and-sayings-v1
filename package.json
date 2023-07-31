@@ -21,6 +21,7 @@
     "@nuxtjs/tailwindcss": "^6.2.0",
     "@unocss/preset-icons": "^0.48.0",
     "@vueuse/core": "^9.10.0",
+    "@yeger/vue-masonry-wall": "^4.2.1",
     "canvas": "^2.11.0",
     "canvas-multiline-text": "^1.0.3",
     "image-data-uri": "^2.0.1",

@@ -1419,6 +1419,25 @@
   dependencies:
     vue-demi "*"
 
+"@yeger/vue-lib-adapter@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@yeger/vue-lib-adapter/-/vue-lib-adapter-1.1.1.tgz#6ce68abb29d1709cf59b321e55fbbedcaed6ac05"
+  integrity sha512-Yk/vYI0UtcWV4IW1lCI/j+dZng33Q+N1N9+Fo9JQsUWgTlRATdwhQi91PAHeys0VtLIYkFw9I2FWEB+N/O+c3Q==
+
+"@yeger/vue-masonry-wall-core@4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@yeger/vue-masonry-wall-core/-/vue-masonry-wall-core-4.2.1.tgz#ff4cd15d91904a02cf5b01de80ef7713b292c128"
+  integrity sha512-lamOIZjPaZyCKpb6fbwLgvxqNS41DnJcdHhD0QvZZC2twjXWKpdiHF69slhGWguSxsZo15Zv+8O3xZM3ikFIWw==
+  dependencies:
+    "@yeger/vue-lib-adapter" "1.1.1"
+
+"@yeger/vue-masonry-wall@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@yeger/vue-masonry-wall/-/vue-masonry-wall-4.2.1.tgz#b009e303c3e419c92b2446142936cb9449e686c9"
+  integrity sha512-KD82rut/4uUqCwbp1fB4TxvAlqbZ+kE7axMqLduMuaq0VMaK+81H/G1JemnBlGRc9xHH638GPisDnQ/rB2g8MQ==
+  dependencies:
+    "@yeger/vue-masonry-wall-core" "4.2.1"
+
 "@zhead/schema@^1.0.9":
   version "1.0.9"
   resolved "https://registry.npmjs.org/@zhead/schema/-/schema-1.0.9.tgz"

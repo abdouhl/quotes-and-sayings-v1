@@ -104,9 +104,9 @@ useHead({
 
 <section :dir="$t('dir')" class="w-full grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
 
-<div v-for="quote in quotes_list[0].body.slice((parseInt(page_id)-1)*15,parseInt(page_id)*15)" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
-<p class="p-1 md:p-2"><a :href="localePath('/quotes/'+quote.key)" >{{quote.text}}</a></p>
-<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;"><a :href="localePath('/authors/'+quote.username)" >{{quote.name}}</a></h2>
+<div v-for="quote in quotes_list[0].body.slice((parseInt(page_id)-1)*15,parseInt(page_id)*15)" class="flex flex-col rounded-lg bg-white divide-y  px-1 md:px-2">
+<p class="flex-1 justify-self-center p-1 md:p-2 flex items-center"><a :href="localePath('/quotes/'+quote.key)" >{{quote.text}}</a></p>
+<h2 class="flex-none text-xl text-center py-1 " style="font-family: Lobster, cursive;"><a :href="localePath('/authors/'+quote.username)" >{{quote.name}}</a></h2>
 </div>
 
 </section>
