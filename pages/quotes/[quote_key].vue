@@ -20,7 +20,13 @@ const query = queryContent({where: {_path: { $contains: '/'+locale.value }}})
 const { data: quotes_list } = await useAsyncData('home', () => queryContent('/'+locale.value+'/quotes').find())
 const author_username = quotes_list._value[0].body.filter(l => l['key'] == quote_key )[0].username
 
-
+onMounted(async () => {
+	await nextTick()
+	var message = document.createElement("script");
+  var alert = document.createTextNode("(adsbygoogle = window.adsbygoogle || []).push({});");
+  message.appendChild(alert);
+  document.body.appendChild(message);	
+})
 
 useHead({
   title: t('title'),
@@ -43,6 +49,8 @@ useHead({
     {src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3610150616518651',async:'',crossorigin: "anonymous"}
   ]
 })
+
+
 </script>
 
 <template>
@@ -92,7 +100,15 @@ useHead({
 
 
 </section>
-
+<section :dir="$t('dir')" class="w-full gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
+<ins  class="adsbygoogle"
+ style="display:block; text-align:center;"
+ data-ad-layout="in-article"
+ data-ad-format="fluid"
+ data-ad-client="ca-pub-3610150616518651"
+ data-ad-slot="9731162583">
+</ins>
+</section>
 <section :dir="$t('dir')" class="w-full grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
 <div v-for="quote in quotes_list[0].body.filter(l => l['username'] == author_username ).filter(l => l['key'] != quote_key )" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
 <p class="p-1 md:p-2">{{quote.text}}</p>
