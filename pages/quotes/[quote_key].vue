@@ -18,6 +18,7 @@ const query = queryContent({where: {_path: { $contains: '/'+locale.value }}})
 
 
 const { data: quotes_list } = await useAsyncData('home', () => queryContent('/'+locale.value+'/quotes').find())
+const author_username = quotes_list._value[0].body.filter(l => l['key'] == quote_key )[0].username
 
 
 
@@ -86,16 +87,16 @@ useHead({
 <section :dir="$t('dir')" class="w-full grid mx-auto  grid-cols-1 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
 <div v-for="quote in quotes_list[0].body.filter(l => l['key'] == quote_key )" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
 <p class="p-1 md:p-2">{{quote.text}}</p>
-<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;">{{quote.name}}</h2>
+<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;"><a :href="localePath('/authors/'+quote.username)" >{{quote.name}}</a></h2>
 </div>
 
 
 </section>
 
 <section :dir="$t('dir')" class="w-full grid mx-auto  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 mty2 md:my-8 px-2 md:px-24 lg:px-36 text-slate-700" >
-<div v-for="quote in quotes_list[0].body.filter(l => l['username'] == author_username )" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
+<div v-for="quote in quotes_list[0].body.filter(l => l['username'] == author_username ).filter(l => l['key'] != quote_key )" class=" rounded-lg bg-white divide-y  px-1 md:px-2">
 <p class="p-1 md:p-2">{{quote.text}}</p>
-<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;">{{quote.name}}</h2>
+<h2 class="text-xl text-center py-1 " style="font-family: Lobster, cursive;"><a :href="localePath('/authors/'+quote.username)" >{{quote.name}}</a></h2>
 </div>
 
 </section>
