@@ -23,8 +23,8 @@ const query = queryContent({where: {_path: { $contains: '/'+locale.value }}})
 const { data: authors_list } = await useAsyncData('home', () => queryContent('/'+locale.value+'/authors').find())
 const { data: quotes_list } = await useAsyncData('home', () => queryContent('/'+locale.value+'/quotes').find())
 
-console.log('a',authors_list)
-console.log('q',quotes_list)
+console.log('a',authors_list._rawValue[0].body.length)
+console.log('q',quotes_list._rawValue[0].body.length)
 const pages_count = quotes_list._rawValue[0].body.length%15==0 ? parseInt(quotes_list._rawValue[0].body.length/15) :parseInt(quotes_list._rawValue[0].body.length/15) +1
 
 
